@@ -2,7 +2,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.fkjava</groupId>
+	<groupId>org.zzwwsy</groupId>
 	<artifactId>wx_kemao_1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -28,6 +28,5 @@
 		<module>weixin</module>
 		<module>subscribe</module>
 		<module>commons</module>
-		<module>unsubscribe</module>
 	</modules>
 </project>
