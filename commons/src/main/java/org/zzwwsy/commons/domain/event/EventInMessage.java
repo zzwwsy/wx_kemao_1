@@ -25,20 +25,19 @@ public class EventInMessage extends InMessage {
 	@JsonProperty("EventKey")
 	private String eventKey;
 
-	public String getEvent() {
+	public String getEvent(){
 		return event;
 	}
 
-	public void setEvent(String event) {
+	public void setEvent(String event){
 		this.event = event;
 	}
 
-	public String getEventKey() {
+	public String getEventKey(){
 		return eventKey;
 	}
 
 	public void setEventKey(String eventKey) {
 		this.eventKey = eventKey;
 	}
-
 }
