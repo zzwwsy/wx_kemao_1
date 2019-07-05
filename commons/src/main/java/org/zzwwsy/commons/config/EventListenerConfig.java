@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.zzwwsy.commons.domain.InMessage;
+import org.zzwwsy.commons.domain.ResponseToken;
 import org.zzwwsy.commons.domain.event.EventInMessage;
 import org.zzwwsy.commons.service.JsonRedisSerializer;
 import org.springframework.beans.factory.DisposableBean;
@@ -62,6 +63,21 @@ public interface EventListenerConfig extends//
 		template.setValueSerializer(new JsonRedisSerializer());
 
 		return template;
+	}
+	
+	@Bean
+	public default RedisTemplate<String, ResponseToken>  tokenRedisTemplate(
+			@Autowired RedisConnectionFactory redisConnectionFactory
+			){
+		RedisTemplate<String, ResponseToken> template = new RedisTemplate<>();
+		template.setConnectionFactory(redisConnectionFactory);
+
+		// 由于不确定是哪个类型，InMessage只是一个父类，它有许多不同的子类。
+		// 因此扩展Jackson2JsonRedisSerializer变得极其重要：重写方法、不要构造参数
+		template.setValueSerializer(new JsonRedisSerializer());
+
+		return template;
+		
 	}
 
 	@Bean
