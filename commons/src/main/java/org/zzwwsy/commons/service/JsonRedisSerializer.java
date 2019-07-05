@@ -6,29 +6,28 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.Arrays;
 
+import org.zzwwsy.commons.domain.InMessage;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;
-import org.zzwwsy.commons.domain.InMessage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonRedisSerializer extends Jackson2JsonRedisSerializer<Object> {
 
 	private ObjectMapper objectMapper = new ObjectMapper();
-	
-	public JsonRedisSerializer(){
+
+	public JsonRedisSerializer() {
 		super(Object.class);
 	}
-	
-	//序列化对象的时候被调用的方法，负责把InMessage转化为byte[]
+
+	// 序列化对象的时候被调用的方法，负责把InMessage转换为byte[]
 	@Override
 	public byte[] serialize(Object t) throws SerializationException {
 		// 我们现在希望把对象序列化成JSON字符串，但是JSON字符串本身不确定对象的类型，所以需要扩展：
 		// 序列化的时候先把类名的长度写出去，再写出类名，最后再来写JSON字符串。
-		
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();// 把数据输出到一个字节数组
-		DataOutputStream out = new DataOutputStream(baos);		// 把输出流封装成数据输出流
 
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();// 把数据输出到一个字节数组
+		DataOutputStream out = new DataOutputStream(baos);// 把输出流封装成数据输出流
 		try {
 			String className = t.getClass().getName();// 获取类名
 			byte[] classNameBytes = className.getBytes("UTF-8");
@@ -46,18 +45,13 @@ public class JsonRedisSerializer extends Jackson2JsonRedisSerializer<Object> {
 		} catch (Exception e) {
 			throw new SerializationException("序列化对象出现问题：" + e.getLocalizedMessage(), e);
 		}
-		
 //		return super.serialize(t);
 	}
-	
-	//反序列化对象的时候被调用的方法，负责把字节数组转化为InMessage
+
+	// 在反序列化的时候被调用的方法，负责把字节数组转换为InMessage
 	@Override
 	public InMessage deserialize(byte[] bytes) throws SerializationException {
-		
-		if(bytes == null || bytes.length == 0) {
-			return null;
-		}
-		
+
 		ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
 		DataInputStream in = new DataInputStream(bais);
 
@@ -81,6 +75,7 @@ public class JsonRedisSerializer extends Jackson2JsonRedisSerializer<Object> {
 
 //		return super.deserialize(bytes);
 	}
+
 	public ObjectMapper getObjectMapper() {
 		return objectMapper;
 	}

@@ -17,7 +17,7 @@ spring:
       # 这里换自己的IP
       host: 127.0.0.1
       port: 6379
-      database: 15
+      database: 3
 
    
 

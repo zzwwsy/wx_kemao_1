@@ -9,7 +9,6 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.Charset;
 
 import org.zzwwsy.commons.domain.User;
-import org.zzwwsy.commons.service.TokenManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -18,9 +18,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootApplication
-@ComponentScan("org.zzwwsy")
-@EnableJpaRepositories("org.zzwwsy")
-@EntityScan("org.zzwwsy")
+@ComponentScan("org.fkjava")
+@EnableJpaRepositories("org.fkjava")
+@EntityScan("org.fkjava")
 public class SubscribeApplication implements //
 		EventListenerConfig, //
 		// 得到Spring的容器
