@@ -6,7 +6,7 @@ import org.zzwwsy.commons.domain.User;
 import org.zzwwsy.commons.domain.event.EventInMessage;
 import org.zzwwsy.commons.processors.EventMessageProcessor;
 import org.zzwwsy.commons.repository.UserRepository;
-import org.zzwwsy.weixin.service.WeixinProxy;
+import org.zzwwsy.commons.service.WeixinProxy;
 
 @Service("subscribeMessageProcessor")
 public class SubscribeEventMessageProcessor implements EventMessageProcessor {
